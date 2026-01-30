@@ -10,9 +10,9 @@ CONF_FLAGS=(
   --enable-cross-compile        # use cross compile configs
   --disable-asm                 # disable asm
   --disable-stripping           # disable stripping as it won't work
-#  --disable-programs            # disable ffmpeg, ffprobe and ffplay build
-#  --disable-doc                 # disable doc build
-#  --disable-debug               # disable debug mode
+  --disable-programs            # disable ffmpeg, ffprobe and ffplay build
+  --disable-doc                 # disable doc build
+  --disable-debug               # disable debug mode
   --disable-runtime-cpudetect   # disable cpu detection
   --disable-autodetect          # disable env auto detect
   --enable-small

@@ -56,12 +56,12 @@ COPY build/ogg.sh /src/build.sh
 RUN bash -x /src/build.sh
 
 # Build theora
-FROM emsdk-base AS theora-builder
-COPY --from=ogg-builder $INSTALL_DIR $INSTALL_DIR
-ENV THEORA_BRANCH=v1.1.1
-ADD https://github.com/ffmpegwasm/theora.git#$THEORA_BRANCH /src
-COPY build/theora.sh /src/build.sh
-RUN bash -x /src/build.sh
+#FROM emsdk-base AS theora-builder
+#COPY --from=ogg-builder $INSTALL_DIR $INSTALL_DIR
+#ENV THEORA_BRANCH=v1.1.1
+#ADD https://github.com/ffmpegwasm/theora.git#$THEORA_BRANCH /src
+#COPY build/theora.sh /src/build.sh
+#RUN bash -x /src/build.sh
 
 # Build opus
 FROM emsdk-base AS opus-builder
@@ -79,11 +79,11 @@ COPY build/vorbis.sh /src/build.sh
 RUN bash -x /src/build.sh
 
 # Build zlib
-FROM emsdk-base AS zlib-builder
-ENV ZLIB_BRANCH=v1.2.11
-ADD https://github.com/ffmpegwasm/zlib.git#$ZLIB_BRANCH /src
-COPY build/zlib.sh /src/build.sh
-RUN bash -x /src/build.sh
+#FROM emsdk-base AS zlib-builder
+#ENV ZLIB_BRANCH=v1.2.11
+#ADD https://github.com/ffmpegwasm/zlib.git#$ZLIB_BRANCH /src
+#COPY build/zlib.sh /src/build.sh
+#RUN bash -x /src/build.sh
 
 # Build libwebp
 #FROM emsdk-base AS libwebp-builder
@@ -141,7 +141,7 @@ ADD https://github.com/FFmpeg/FFmpeg.git#$FFMPEG_VERSION /src
 #COPY --from=libvpx-builder $INSTALL_DIR $INSTALL_DIR
 COPY --from=lame-builder $INSTALL_DIR $INSTALL_DIR
 COPY --from=opus-builder $INSTALL_DIR $INSTALL_DIR
-COPY --from=theora-builder $INSTALL_DIR $INSTALL_DIR
+#COPY --from=theora-builder $INSTALL_DIR $INSTALL_DIR
 COPY --from=vorbis-builder $INSTALL_DIR $INSTALL_DIR
 #COPY --from=libwebp-builder $INSTALL_DIR $INSTALL_DIR
 #COPY --from=libass-builder $INSTALL_DIR $INSTALL_DIR
@@ -152,7 +152,7 @@ FROM ffmpeg-base AS ffmpeg-builder
 COPY build/ffmpeg.sh /src/build.sh
 RUN bash -x /src/build.sh \
       --enable-libmp3lame \
-      --enable-libtheora \
+#      --enable-libtheora \
       --enable-libvorbis \
       --enable-libopus
 #      --enable-zlib
@@ -174,7 +174,7 @@ ENV FFMPEG_LIBS \
 #      -lvpx \
       -lmp3lame \
       -logg \
-      -ltheora \
+#      -ltheora \
       -lvorbis \
       -lvorbisenc \
       -lvorbisfile \
