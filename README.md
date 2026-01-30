@@ -23,6 +23,25 @@ Join us on Discord!
 
 [![Discord](https://dcbadge.vercel.app/api/server/NjGMaqqfm5)](https://discord.gg/NjGMaqqfm5)
 
+## Steps to build audio only FFMPEG WASM version
+
+On clean Ubuntu 24.04 OS
+ 
+$ sudo apt update
+$ sudo apt install make docker.io docker-buildx make -y
+
+$ git clone https://github.com/chensherlock/ffmpeg.wasm.git
+$ cd ffmpeg.wasm
+$ git checkout audio-only
+
+Build Single Thread version
+$ make prd
+Binary will be available on packages/core/dist
+
+Build Multi Thread version
+$ make prd-mt
+Binary will be available on packages/core-mt/dist
+
 ## Documentation
 
 - [Introduction](https://ffmpegwasm.netlify.app/docs/overview)
